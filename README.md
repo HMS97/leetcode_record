@@ -1,12 +1,11 @@
 # leetcode record for Huiming and NaNa
 
 ## <a name="Catalogue"/>Catalogue
-
+I love nana
 * Easy
     * [1. Two Sum](#1)
 
 ## <a name="1"> 1.Two Sum
-
 -------------------------
 ### Question:
 >Given an array of integers, return indices of the two numbers such that they add up to a >specific target.You may assume that each input would have exactly one solution, and you may >not use the same element twice.
