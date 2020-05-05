@@ -1,6 +1,6 @@
-# leetcode_record
+# leetcode record for Huiming and NaNa
 
-## <a name="Catalogue"/>目录
+## <a name="Catalogue"/>Catalogue
 
 * Easy
     * [1. Two Sum](#1)
@@ -15,10 +15,13 @@
 
 ```
         Given nums = [2, 7, 11, 15], target = 9,
-
         Because nums[0] + nums[1] = 2 + 7 = 9,
         return [0, 1].
 ```
+
+### Thinking
+> put all numbers into a dictionary. if target - element in list  = another element in list 
+>We use a dictionary to record the index of the list. the first element must be in the >dictionary because of the final list is consist by two numbers.
 
 ### Solution:
 
