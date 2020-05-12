@@ -7,6 +7,7 @@ I love nana
     * [2. 整数反转](#2)
     * [1365. how-many-numbers-are-smaller-than-the-current-number](#1365)
     * [4.  Linked List Cycle](#4)
+    * [771.  jewels-and-stones](#771)
 
 
 ## <a name="1"> 1.Two Sum
@@ -248,4 +249,36 @@ class Solution:
 [back to Catalogue](#Catalogue)
 
 -------------------------
+## <a name="771"> 771. Jewels and Stones
+### Question:
+>You're given strings J representing the types of stones that are jewels, and S representing the stones you have.  Each character in S is a type of stone you have.  You want to know how many of the stones you have are also jewels.
+
+The letters in J are guaranteed distinct, and all characters in J and S are letters. Letters are case sensitive, so "a" is considered a different type of stone from "A".
+
+### Example:
+
+>Example 1:
+
+Input: J = "aA", S = "aAAbbbb"
+Output: 3
+Example 2:
+
+Input: J = "z", S = "ZZ"
+Output: 0
+
+### Thinking:
+>too easy
+
+### Solution:
+
+```python
+class Solution:
+    def numJewelsInStones(self, J: str, S: str) -> int:
+        J = list(J)
+        # S = list(S)
+        num = 0
+        for i in J:
+            num += S.count(i)
+        return num
+```
 -------------------------
