@@ -9,6 +9,7 @@ I love nana
     * [4.  Linked List Cycle](#4)
     * [771.  jewels-and-stones](#771)
     * [876. Middle of the Linked List](#876)
+    * [565. Array Nesting](#565)
 
 
 ## <a name="1"> 1.Two Sum
@@ -311,7 +312,7 @@ Since the list has two middle nodes with values 3 and 4, we return the second on
 
 ### Thinking 
 
-The fast pointer's speed is 2 times  faster than slow one. So when the faster point get the end. The slow one will reach to the middle.
+>The fast pointer's speed is 2 times  faster than slow one. So when the faster point get the end. The slow one will reach to the middle.
 
 ### Solution:
 
@@ -331,3 +332,53 @@ public:
     }
 };
 ```
+## <a name="565"> 565.Array Nesting
+
+### Question:
+
+>A zero-indexed array A of length N contains all integers from 0 to N-1. Find and return the longest length of set S, where S[i] = {A[i], A[A[i]], A[A[A[i]]], ... } subjected to the rule below.
+Suppose the first element in S starts with the selection of element A[i] of index = i, the next element in S should be A[A[i]], and then A[A[A[i]]]… By that analogy, we stop adding right before a duplicate element occurs in S.
+
+### Example:
+
+>Input: A = [5,4,0,3,1,6,2]
+Output: 4
+Explanation: 
+A[0] = 5, A[1] = 4, A[2] = 0, A[3] = 3, A[4] = 1, A[5] = 6, A[6] = 2.
+One of the longest S[K]:
+S[0] = {A[0], A[5], A[6], A[2]} = {5, 6, 2, 0}
+
+
+### Thinking
+
+by visited array recording the node
+
+### code:
+```python
+class Solution:
+
+    depth = 0 
+    def dfs(self,nums, start, visited):
+        start = nums[start]
+        if start in visited:
+            return 
+        else:
+            # visited.append(start)
+            self.depth += 1            
+            return self.dfs(nums,start,visited)
+    
+    
+    def arrayNesting(self, nums: List[int]) -> int:
+        length_list = []
+        maxd = -1
+        for i in range(len(nums)):
+            self.depth = 1 
+            visited = [nums[i]]
+            self.dfs(nums,nums[i], visited)
+            maxd = max(maxd,self.depth)
+                
+        return  maxd
+```
+
+
+-------------------------
