@@ -10,6 +10,7 @@ I love nana
     * [771.  jewels-and-stones](#771)
     * [876. Middle of the Linked List](#876)
     * [565. Array Nesting](#565)
+    * [881. Boats to Save People](#881)
 
 
 ## <a name="1"> 1.Two Sum
@@ -354,6 +355,7 @@ S[0] = {A[0], A[5], A[6], A[2]} = {5, 6, 2, 0}
 by visited array recording the node
 
 ### code:
+
 ```python
 class Solution:
 
@@ -380,5 +382,74 @@ class Solution:
         return  maxd
 ```
 
+
+-------------------------
+
+
+
+## <a name="881"> 881.Boats to Save People
+
+
+### Question:
+
+>The i-th person has weight people[i], and each boat can carry a maximum weight of limit.
+Each boat carries at most 2 people at the same time, provided the sum of the weight of those people is at most limit.
+Return the minimum number of boats to carry every given person.  (It is guaranteed each person can be carried by a boat.)
+
+### Example:
+>Input: people = [1,2], limit = 3
+Output: 1
+Explanation: 1 boat (1, 2)
+>Input: people = [3,2,2,1], limit = 3
+Output: 3
+Explanation: 3 boats (1, 2), (2) and (3)
+>Input: people = [3,5,3,4], limit = 5
+Output: 4
+Explanation: 4 boats (3), (3), (4), (5)
+>note:1 <= people.length <= 50000
+1 <= people[i] <= limit <= 30000
+
+
+### Thinking: 
+
+>first sorted the array and use iteration to remove people from waiting array.
+
+
+### Code:
+
+```python
+def calualate(people,limit):
+
+    if people[-1] == limit:
+        people.pop(-1)
+        return people
+    if limit - people[-1] > 0  :
+        left = limit - people[-1]
+        people.pop(-1)
+        if len(people) == 0:
+            return people
+        if left - people[0] < 0 :
+            return people
+
+        while(left > 0 and len(people)>0):
+            left = left - people[0]
+            
+            if left < 0 or len(people) == 0:
+                break
+            people.pop(0)
+        return people
+    
+def numRescueBoats( people, limit) -> int:
+    people = sorted(people)
+    
+    count = 0
+    while(len(people)>0):
+        print(people)
+
+        people = calualate(people,limit)
+        count+=1
+    return count
+    
+```
 
 -------------------------
